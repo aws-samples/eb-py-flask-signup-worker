@@ -1,0 +1,4 @@
+*.pyc
+.elasticbeanstalk/
+release/
+.idea

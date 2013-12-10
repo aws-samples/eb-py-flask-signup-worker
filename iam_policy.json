@@ -1,0 +1,28 @@
+{
+  "Statement": [
+    {
+      "Sid" : "SesAccess",
+      "Effect": "Allow",
+      "Action":   [ "ses:SendEmail" ],
+      "Resource": [ "*" ]
+    },
+    {
+      "Sid": "QueueAccess",
+      "Action": [
+        "sqs:ChangeMessageVisibility",
+        "sqs:DeleteMessage",
+        "sqs:ReceiveMessage"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    },
+    {
+      "Sid": "MetricsAccess",
+      "Action": [
+        "cloudwatch:PutMetricData"
+      ],
+      "Effect": "Allow",
+      "Resource": "*"
+    }
+  ]
+}
