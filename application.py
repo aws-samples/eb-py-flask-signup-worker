@@ -18,7 +18,7 @@ import json
 import flask
 from flask import request, Response
 
-import boto
+import boto.ses
 
 # Create and configure the Flask app
 application = flask.Flask(__name__)
@@ -47,7 +47,7 @@ def customer_registered():
                 message = request.json
             
             # Connect to SES and send an e-mail    
-            ses = boto.connect_ses()
+            ses = boto.ses.connect_to_region(application.config['AWS_REGION'])
             ses.send_email(source=application.config['SOURCE_EMAIL_ADDRESS'],
                            subject=SUBJECT,
                            body=BODY % (message['name']),
